@@ -25,7 +25,7 @@ h1{
 }
 
 form{
-    width: 700px;
+    width: 900px;
     height: 700px;
     border: 2px solid black;
     margin-right: auto;
@@ -38,3 +38,4 @@ label{
     font-family: verdana;
     font-size: 1.2em;
 }
+
