@@ -1,41 +1,76 @@
 *{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-header{
-    width: 100%;
-    height: 60px;
-    background-color: whitesmoke;
-    margin-bottom: 50px;
-    border-bottom: 2px solid black;
-}
-
-h1{
-    width: 500px;
-    height: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: verdana;
-    font-size: 2em;
-    text-align: center;
-    padding-top: 10px;
-    letter-spacing: 4px;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
 }
 
 form{
-    width: 900px;
-    height: 700px;
-    border: 2px solid black;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 10px;
-    padding: 30px;
+	margin-top: 50px;
+	height: 720px;
+	width: 1030px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	border-radius: 20px 20px 20px 20px;
+	background-color: #ebebf0;
 }
 
-label{
-    font-family: verdana;
-    font-size: 1.2em;
+h1{
+	text-align: center;
+	background-color:#2a58b8;
+	height: 60px;
+	width: inherit;
+	padding-top: 10px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 }
 
+
+h3{
+	width: 170px;
+	height: 50px;
+	border-bottom: 2px solid black ;
+	padding-left: 20px;
+	padding-top: 20px;
+	margin-left: 20px;
+}
+
+.inputStyle{
+	height: 560px;
+	width: 450px;
+	padding-left: 20px;
+	margin-top: 20px;
+}
+
+.organizarSecao{
+	float: left;
+	width: 450px;
+	height: 630px;
+	margin-left: 40px;
+}
+
+input{
+	width: 400px;
+	height: 50px;
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: black solid 1px;
+	padding-left: 10px;
+	outline: 0;
+	background-color: inherit;
+}
+
+button{
+	width: 400px;
+	margin-top: 50px;
+	height: 50px;
+	font-size: 1.4em;
+	background-color: #92a9d1;
+	border: none;
+	border-radius: 20px 20px 20px 20px;
+}
+
+button:hover{
+	 background-image: linear-gradient(to bottom right, #2b66e0, #353c4a);
+	cursor: pointer;
+}

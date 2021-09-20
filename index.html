@@ -4,73 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title> Title </title>
+	<title> Cadastro </title>
     <link href="css/style.css"
             rel="stylesheet"
             type="text/css"> 
+	<script src="main.js" defer> </script>
 </head>
 
 <body>
-    <header>
-        <h1>
-            Cadastro 
-        </h1>
-    </header>
-    <form action="" method="post">
-        <div>
-            <label> Nome </label>
-            <input id="txtNome" type="text" maxlength="20"> 
-        
-            <label> Sobrenome </label>
-            <input id="txtSobrenome" type="text" maxlength="50">
-        </div>
-       
-        <div>
-            <label> Nome Completo </label>
-            <input id="txtNomeCompleto"> 
-        </div>
-       
-        <div> 
-            <label> CEP </label>
-            <input  id="txtCep" type="number">
-            
-            <label> Numero </label>
-            <input id="txtNumero"> 
-            
-            <label> Rua </label>
-            <input id="txtRua">
-            
-            <label> Bairro: </label>
-            <input id="txtBairro">
-            
-            <label> Cidade </label>
-            <input id="txtCidade">  
-        </div>
-        
-        <div> 
-            <label> Telefone: </label>
-            <input id="txtTelefone">
+	<form id="formulario">
+		<h1> Cadastro </h1>
+			<div class="organizarSecao">
+				<h3> Seus Dados </h3>
+				<div class="inputStyle">
+					<!-- inserir nome -->
+					<input type="text" id="txtNome" placeholder="Nome" value="" maxlength="20" required>
+					<!-- inserir sobrenome -->
+					<input type="text" id="txtSobrenome" placeholder="Sobrenome" value="" maxlength="50" required>
+					<!-- inserir nome completo -->
+					<input type="text" id="txtNomeCpl" placeholder="Nome Completo" value="" maxlength="100" required>
 
-            <label> Celular</label>
-            <input id="txtCelular">
-        </div>
-        
-       <div> 
-            <label> Email: </label>
-            <input id="txtEmail">
+					<!-- inserir telefone -->
+					<input type="telefone" id="txtTelefone" placeholder="Telefone" value="" maxlength="10" required>
+					<!-- inserir Celular -->
+					<input type="text" id="txtCelular" placeholder="Celular" value="" maxlength="12" required>
 
-            <label> Confime seu Email </label>
-            <input id="txtConfEmail"> 
-        </div>
-        
-        
-        <div> 
-            <input type="button" value="Cadastrar"> 
-        </div>
-    </form>
-    
-    <footer>
-    
-    </footer>
+					<!-- inserir email -->
+					<input type="email" id="txtEmail" placeholder="Email" value="" maxlength="100" required>
+					<!-- inserir confirmação de email -->
+					<input type="email" id="txtEmailConf" placeholder="Confirmação Email" value="" maxlength="100" required>
+				</div>
+			</div>
+			
+			<div class="organizarSecao">
+				<h3> Endereço </h3>
+				<div class="inputStyle"> 
+					<!-- inserir cep -->
+					<input type="text" id="txtCep" placeholder="CEP" value="" maxlength="10" required>
+					<!-- inserir cidade -->
+					<input type="text" id="txtCidade" placeholder="Cidade" value="" maxlength="50" required>
+					<!-- inserir baiiro -->
+					<input type="text" id="txtBairro" placeholder="Bairro" value="" maxlength="50" required>
+					<!-- inserir rua -->
+					<input type="text" id="txtRua" placeholder="Rua" value="" maxlength="100" required>
+					<!-- inserir numero -->
+					<input type="text" id="txtNumero" placeholder="Número" value="" maxlength="10"required>
+					<button id="btnCadastrar"> Cadastrar </button>
+				</div>
+			</div>
+	</form>
 </body>
 </html>
