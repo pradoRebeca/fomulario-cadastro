@@ -71,6 +71,5 @@ button{
 }
 
 button:hover{
-	 background-image: linear-gradient(to bottom right, #2b66e0, #353c4a);
 	cursor: pointer;
 }

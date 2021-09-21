@@ -1,6 +1,8 @@
 'use strict';
-	
 
+const validar = /Preencha somente com letras/g;
+const validar2 = /Preenchimento Obrigatório/g;
+const validar3 = /Preencha somente com Números/g;
 
 //função para verificar dados tipo string
 const eTexto = (texto) => /^[a-zA-Z]+$/.test(texto);
@@ -10,9 +12,6 @@ function completarNome(){
 	const nome = document.getElementById("txtNome");
 	const sobrenome = document.getElementById("txtSobrenome");
 	const nomeCompleto = document.getElementById("txtNomeCpl");
-		
-		const validar = /Preencha somente com letras/g;
-		const validar2 = /Preenchimento Obrigatório/g
 		
 		if(!validar.test(nome.value) && !validar.test(sobrenome.value) && !validar2.test(nome.value) && !validar2.test(sobrenome.value)){
 			const receber = nome.value + " " + sobrenome.value
@@ -101,9 +100,8 @@ const pesquisarCep = async() => {
 	}
 }
 
-//eventos do consumo api
+//evento do consumo api
 document.getElementById("txtCep").addEventListener("focusout", pesquisarCep)
-document.getElementById("txtNumero").addEventListener("focusout", validarNumero)
 
 function validarNumero(){
 	const numero = document.getElementById("txtNumero").value;
@@ -119,6 +117,37 @@ function validarNumero(){
 	}
 }
 
+document.getElementById("txtNumero").addEventListener("focusout", validarNumero)
+
+function validarCidade(){
+	const cidade = document.getElementById("txtCidade").value;
+	if(cidade == ""){
+		campoObrig("txtCidade");
+	} else {
+		if(eNumero(cidade)){
+		erroAlerta("txtCidade", "red");
+		document.getElementById("txtCidade").value = "Preencha somente com Letras";
+	} else {
+		erroAlerta("txtCidade", "black");
+		}
+	}
+}
+document.getElementById("txtCidade").addEventListener("focusout", validarCidade)
+
+function validarBairro(){
+	const bairro = document.getElementById("txtBairro").value;
+	if(bairro == ""){
+		campoObrig("txtBairro");
+	} else {
+		if(eNumero(bairro)){
+		erroAlerta("txtBairro", "red");
+		document.getElementById("txtBairro").value = "Preencha somente com Letras";
+	} else {
+		erroAlerta("txtBairro", "black");
+		}
+	}
+}
+document.getElementById("txtBairro").addEventListener("focusout", validarBairro)
 
 //confirmação email
 function verificarEmail(){
@@ -161,18 +190,26 @@ function mascaraTelefone(){
 	const telefone = document.getElementById("txtTelefone");
 	if(telefone.value == ""){
 		campoObrig("txtTelefone");
-	} else {
-		telefone.value = telefone.value.replace(/^(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
-	}
+	} else if(eTexto(telefone.value)){
+		erroAlerta("txtTelefone", "red");
+		telefone.value = "Preencha somente com Números";
+		} else {
+			telefone.value = telefone.value.replace(/^(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+			erroAlerta("txtTelefone", "black");
+		}
 }
 
 function mascaraCelular(){
 	const celular = document.getElementById("txtCelular");
 	if(celular.value == ""){
 		campoObrig("txtCelular");
-	} else{
-		celular.value = celular.value.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-	}	
+	} else if(eTexto(celular.value)){
+		erroAlerta("txtCelular", "red");
+		celular.value = "Preencha somente com Números";
+		} else {
+			celular.value = celular.value.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+			erroAlerta("txtCelular", "black");
+		}
 }
 
 function mascaraCep(){
@@ -183,14 +220,6 @@ function mascaraCep(){
 //eventos mascara input 
 document.getElementById("txtTelefone").addEventListener("focusout", mascaraTelefone);
 document.getElementById("txtCelular").addEventListener("focusout", mascaraCelular);
-
-function cadastro(){
-	const cadastro = document.getElementById("btnCadastrar");
-	alert("Cadastro realizado com sucesso");
-}
-
-
-/*** Função complemetar****/
 
 //erros ou alertas 
 function erroAlerta( id, cor){
@@ -206,21 +235,70 @@ function campoObrig(id){
 	erroAlerta(id, "orange");
 }
 
-//function btnCadastro(){
-//	const cadastro = document.getElementById("btnCadastrar");
-//
-//	
-//	const validar = /Preencha somente com letras/g;
-//	const validar2 = /Preenchimento Obrigatório/g;
-//	console.log(input);
-//	if(!validar.test(input) || !validar2.test(input)){
-//		console.log("true");
-//		cadastro.style.backgroundColor = "red";
-//		alert("Preencha todos os campos corretamente");
-//	} else{
-//		console.log("false");
-//		cadastro.style.backgroundColor = "blue";
-//	}
+
+//função para ativar/desativar o botão
+function ativarBtn(status){
+	const btn = document.getElementById("btnCadastrar")
+	if(status == "true"){
+		btn.disabled = true
+		btn.style.backgroundColor = "#db3a2c"
+	} else {
+		btn.disabled = false
+	}
+}
+
+function receberId(nomeId){
+	const id = document.getElementById(nomeId)
+	return id
+}
+
+//função para verificar se o campo está com avisos
+function verificarCampo(){
+	
+	const nome = receberId("txtNome");
+	const sobrenome = receberId("txtSobrenome");
+	const nomeCpl = receberId("txtNomeCpl");
+	const telefone = receberId("txtTelefone");
+	const celular = receberId("txtCelular");
+	const email = receberId("txtEmail");
+	const emailConf = receberId("txtEmailConf");
+	const cep = receberId("txtCep");
+	const cidade = receberId("txtCidade");
+	const bairro = receberId("txtBairro");
+	const rua = receberId("txtRua");
+	const numero = receberId("txtNumero");
+	
+	if(validar.test(nome.value) || validar2.test(nome.value)){
+		ativarBtn("true");
+	} else if(validar.test(sobrenome.value) || validar2.test(sobrenome.value)){
+		ativarBtn("true");
+	} else if(validar.test(nomeCpl.value) || validar2.test(nomeCpl.value)){
+		ativarBtn("true");
+	} else if(validar.test(telefone.value) || validar2.test(telefone.value) || validar3.test(telefone.value)){
+		ativarBtn("true");
+	} else if(validar.test(celular.value) || validar2.test(celular.value) || validar3.test(celular.value)){
+		ativarBtn("true");
+	} else if(validar.test(email.value) || validar2.test(email.value)){
+		ativarBtn("true");
+	} else if(validar.test(emailConf.value) || validar2.test(emailConf.value)){
+		ativarBtn("true");
+	} else if(validar.test(cep.value) || validar2.test(cep.value)){
+		ativarBtn("true");
+	} else if(validar.test(cidade.value) || validar2.test(cidade.value)){
+		ativarBtn("true");
+	} else if(validar.test(rua.value) || validar2.test(rua.value)){
+		ativarBtn("true");
+	} else if(validar.test(numero.value) || validar2.test(numero.value) || validar3.test(numero.value)){
+		ativarBtn("true");
+	} else {
+		ativarBtn("false");
+	}
+}
+
+document.getElementById("formulario").addEventListener("mouseover", verificarCampo)
+
+
+
 
 
 
